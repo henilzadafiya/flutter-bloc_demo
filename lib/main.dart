@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_block_demo_practice/bloc/counter/counter_bloc.dart';
+import 'package:flutter_block_demo_practice/bloc/favourite_app/favourite_app_bloc.dart';
 import 'package:flutter_block_demo_practice/bloc/image_picker/image_picker_bloc.dart';
 import 'package:flutter_block_demo_practice/bloc/switch_example/switch_bloc.dart';
 import 'package:flutter_block_demo_practice/bloc/todo/to_do_bloc.dart';
+import 'package:flutter_block_demo_practice/repository/favourite_repository.dart';
 import 'package:flutter_block_demo_practice/ui/counter_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_block_demo_practice/ui/favourite_app/favourite_app_screen.dart';
 import 'package:flutter_block_demo_practice/ui/image_picker/image_picker_screen.dart';
 import 'package:flutter_block_demo_practice/ui/switchexample/switch_example_screen.dart';
 import 'package:flutter_block_demo_practice/ui/todo/todo_screen.dart';
@@ -26,15 +29,18 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => CounterBloc(),),
         BlocProvider(create: (context) => SwitchBloc(),),
         BlocProvider(create: (context) => ImagePickerBloc(ImagePickerUtils()),),
-        BlocProvider(create: (context) => ToDoBloc(),)
+        BlocProvider(create: (context) => ToDoBloc(),),
+        BlocProvider(create: (context) => FavouriteBlock(FavoriteRepository()),),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
+        themeMode: ThemeMode.dark,
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          brightness: Brightness.dark,
+          // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: TodoScreen(),
+        home: FavouriteAppScreen(),
       ),
     );
   }
