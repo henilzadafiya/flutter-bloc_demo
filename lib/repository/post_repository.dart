@@ -14,8 +14,9 @@ class PostRepository {
       if (response.statusCode == 200) {
         final body = jsonDecode(response.body) as List;
         return body.map(
-          (e) {
+          (dynamic e) {
             return PostModel(
+              id: e['id'] as int,
               postId: e['postId'] as int,
               email: e['email'] as String,
               body: e['body'] as String,

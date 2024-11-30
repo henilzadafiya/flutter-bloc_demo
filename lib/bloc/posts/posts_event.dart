@@ -5,6 +5,10 @@ abstract class PostsEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class PostFetched extends PostsEvent {
+class PostFetched extends PostsEvent {}
 
+class SearchItem extends PostsEvent {
+  final String stSearch;
+
+  SearchItem(this.stSearch);
 }
